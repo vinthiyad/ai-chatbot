@@ -5,6 +5,8 @@ from pydantic import BaseModel
 from dotenv import load_dotenv
 from google import genai
 from google.genai import types
+from fastapi.staticfiles import StaticFiles
+from fastapi.responses import FileResponse
 import os
 
 # load API key from .env file
@@ -63,3 +65,8 @@ async def chat_endpoint(message: Message):
 @app.get("/")
 async def root():
     return {"status": "AI Chatbot is running"}
+
+
+@app.get("/app")
+async def serve_chat():
+    return FileResponse("index.html")
