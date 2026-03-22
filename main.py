@@ -67,6 +67,7 @@ async def root():
     return {"status": "AI Chatbot is running"}
 
 
+
 @app.get("/app")
 async def serve_chat():
-    return FileResponse("index.html")
+    return FileResponse("./index.html")
